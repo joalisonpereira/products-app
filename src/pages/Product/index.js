@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 
 import Wrapper from './styles';
 
-class Home extends Component {
+class Product extends Component {
   render() {
     return (
       <Wrapper>
-      	<h1>Home</h1>
+      	<h1>Product</h1>
       </Wrapper>
     );
   }
 }
 
-export default Home;
+export default Product;
