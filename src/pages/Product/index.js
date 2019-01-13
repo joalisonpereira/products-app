@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-import Wrapper from './styles';
+import Style from './styles';
 
 class Product extends Component {
   render() {
     return (
-      <Wrapper>
-      	<h1>Product</h1>
-      </Wrapper>
+      <Style>
+      	<h1 id="title">Product</h1>
+      </Style>
     );
   }
 }

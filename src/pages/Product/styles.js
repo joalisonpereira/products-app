@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-const Wrapper = styled.div`
-	h1{
-		color: gold;
+const Style = styled.div`
+	#title{
+		color: blue;
 	}
 `; 
 
-export default Wrapper;
+export default Style;
