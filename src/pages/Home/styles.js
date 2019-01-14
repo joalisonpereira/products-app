@@ -1,9 +1,13 @@
 import styled from 'styled-components';
+import { metrics, colors } from '../../styles';
 
-const Style = styled.div`
-	h1{
-		color: gold;
-	}
-`; 
-
-export default Style;
+export const BackDiv = styled.div`
+	width: 100%;
+	height: 400px;
+	background-color: ${colors.primary};
+	position: absolute;
+	top: 50%;
+	left: 0;
+	z-index: -1;
+	transform: skewY(-5deg);
+`;
