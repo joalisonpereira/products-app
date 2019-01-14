@@ -1,5 +1,5 @@
 import styled, { keyframes } from 'styled-components';
-import { colors } from '../../styles';
+import { colors, fonts } from '../../styles';
 
 const _gravity = keyframes`
 	0%{ margin-top:0 }
@@ -32,7 +32,7 @@ export const Title = styled.h1`
 	font-weight: bold;
 	text-align: center;
 	margin-top: 35px;
-	font-family: 'Oxygen', sans-serif;
+	font-family: ${fonts.secundary};
 	@media(max-width: 1200px){
 		font-size: 35px;
 	}
@@ -46,5 +46,5 @@ export const BackDiv = styled.div`
 	top: 50%;
 	left: 0;
 	z-index: -1;
-	transform: skewY(-5deg);
+	transform: skewY(-2deg);
 `;

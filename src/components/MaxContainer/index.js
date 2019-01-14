@@ -1,33 +1,40 @@
 import React from 'react';
 import { Icon } from 'antd';
+import { Link } from 'react-router-dom';
+import FadeIn from 'react-fade-in';
 import { 
 	Container,
 	Header, 
 	Logo, 
 	Nav, 
-	Section, 
-	Footer } from './styles';
+	Section } from './styles';
 
-const MaxContainer = ({children}) => (
+const MaxContainer = ({children,fadeIn=true}) => (
 	<Container>
 	    <Header>
 	      <Logo>
-	      	<a href="#">
+	      	<Link to="/">
 	      		<Icon type="build" className="icon"/>
 				Products App
-	      	</a>
+	      	</Link>
 	      </Logo>
 	      <Nav>
-	        <a href="#">Dashboard</a>
+	        <Link to="/dashboard">Dashboard</Link>
 	        <a target="_blank" rel="noopener noreferrer" href="https://github.com/joalisonpereira/products-app">Source</a>
 	      </Nav>
 	    </Header>
-        <Section>
-      	   {children}
-        </Section>
-	    <Footer>
-	      All rights reserved &copy; 2018
-	    </Footer>
+        {
+        	fadeIn ?
+				<FadeIn>
+					<Section>
+			      	   {children}
+			        </Section>
+				</FadeIn>
+        	:
+        		<Section>
+		      	   {children}
+		        </Section>
+        }
 	</Container>
 );
 

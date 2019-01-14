@@ -9,3 +9,7 @@ export const colors = {
 	title: '#444',
 	text: '#444'
 }
+
+export const fonts = {
+	secundary: 'Oxygen, sans-serif'
+}

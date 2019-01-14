@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 
-import Style from './styles';
-
 class Product extends Component {
   render() {
     return (
-      <Style>
+      <div>
       	<h1 id="title">Product</h1>
-      </Style>
+      </div>
     );
   }
 }

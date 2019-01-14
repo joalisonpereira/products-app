@@ -41,8 +41,3 @@ export const Section = styled.section`
 	min-height: 450px;
 `;
 
-export const Footer = styled.footer`
-	text-align: center;
-	padding: 30px 0;
-	color: #FFF;
-`;
