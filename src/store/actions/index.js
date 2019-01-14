@@ -21,3 +21,14 @@ export const storeProduct = formData => {
 		});
 	};
 }
+
+export const DELETE_PRODUCT = 'DELETE_PRODUCT';
+export const deleteProduct = id => {
+	return async dispatch => {
+		const { data:{status} } = await api.delete(`products/${id}`);
+		dispatch({
+			type: DELETE_PRODUCT,
+			payload: {status}
+		});
+	};
+}

@@ -1,26 +1,27 @@
 import React from 'react';
 import { Table,Popconfirm, Icon } from 'antd';
+import { connect } from 'react-redux';
+
 import { columns } from './config';
-import { 
-  styles,
-  WrapperFormIcon,
-  WrapperDeleteIcon } from './styles';
+import { styles, WrapperFormIcon, WrapperDeleteIcon } from './styles';
+import { deleteProduct } from '../../store/actions';
 
 class MyTable extends React.Component{
 
   _actionsColumns(){
+    const { deleteProduct } = this.props;
     return {
       title: '',
       key: 'action',
       render: (product) => (
         <span>
-          <WrapperFormIcon href="#">
+          <WrapperFormIcon>
             <Icon type="form"/>
           </WrapperFormIcon>
-          <WrapperDeleteIcon href="#">
+          <WrapperDeleteIcon>
             <Popconfirm
                 title="Remove this product?"
-                onConfirm={() => alert(product.id)}
+                onConfirm={() => deleteProduct(product.id)}
                 icon={
                   <Icon type="warning" style={styles.warningIcon}/>
                 }>
@@ -47,4 +48,8 @@ class MyTable extends React.Component{
   }
 }
 
-export default MyTable;
+const mapDispatchToProps = {
+  deleteProduct
+};
+
+export default connect(null,mapDispatchToProps)(MyTable);
