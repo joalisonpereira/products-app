@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
-import { Row, Col } from 'antd';
 import MaxContainer from '../../components/MaxContainer';
 
-import { BackDiv } from './styles'; 
+import { Image, Title, BackDiv } from './styles'; 
 
 class Home extends Component {
   render() {
     return (
 		<MaxContainer>
+			<Image
+				src={require('../../assets/products.png')}
+			/>
+			<Title>
+				Products App
+			</Title>
 			<BackDiv/>
 		</MaxContainer>
     );

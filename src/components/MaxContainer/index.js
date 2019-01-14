@@ -19,14 +19,14 @@ const MaxContainer = ({children}) => (
 	      </Logo>
 	      <Nav>
 	        <a href="#">Dashboard</a>
-	        <a target="_blank" href="https://github.com/joalisonpereira/products-app">Source</a>
+	        <a target="_blank" rel="noopener noreferrer" href="https://github.com/joalisonpereira/products-app">Source</a>
 	      </Nav>
 	    </Header>
         <Section>
       	   {children}
         </Section>
 	    <Footer>
-	      Products App &copy; 2018
+	      All rights reserved &copy; 2018
 	    </Footer>
 	</Container>
 );

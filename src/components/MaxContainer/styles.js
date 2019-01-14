@@ -38,7 +38,7 @@ export const Nav = styled.nav`
 export const Section = styled.section`
 	background-color: '#FFF';
 	padding: ${metrics.bigMargin}; 
-	min-height: 400px;
+	min-height: 450px;
 `;
 
 export const Footer = styled.footer`

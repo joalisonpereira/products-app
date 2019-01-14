@@ -5,5 +5,7 @@ export const metrics = {
 };
 
 export const colors = {
-	primary: '#1890ff'
+	primary: '#1890ff',
+	title: '#444',
+	text: '#444'
 }
