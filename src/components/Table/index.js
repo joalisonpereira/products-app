@@ -6,7 +6,7 @@ import ModalImage from '../../components/ModalImage';
 import ModalForm from '../../components/ModalForm';
 import { columns } from './config';
 import { b64toBlob } from '../../utils';
-import { styles, FormIconWrapper } from './styles';
+import { styles, AddButton, FormIconWrapper } from './styles';
 import { deleteProduct } from '../../store/actions';
 
 class MyTable extends React.Component{
@@ -26,8 +26,8 @@ class MyTable extends React.Component{
     const { modalImage } = this.state;
     this.setState({
       ...this.state,
-      modalImage:{
-        active: !modalImage.active,
+      modalImage: {
+        active: true,
         data: {
           photo,
           photo_type
@@ -36,8 +36,15 @@ class MyTable extends React.Component{
     });
   }
 
-  _toggleModalForm(product){
+  _toggleModalForm(product=null){
     const { modalForm } = this.state;
+    this.setState({
+      ...this.state,
+      modalForm: {
+        active: true,
+        data: product
+      }
+    });
   }
 
   _toggleModalClose(name){
@@ -85,6 +92,7 @@ class MyTable extends React.Component{
 
   render(){
     const { data } = this.props;
+    const { modalImage, modalForm } = this.state;
     return(
       <div>
         <Table
@@ -93,14 +101,19 @@ class MyTable extends React.Component{
             data.map(item => ({...item, key: item.id}))
           }
         />
-        <ModalImage 
-          data={this.state.modalImage}
+        <ModalImage
+          active={modalImage.active}
+          data={modalImage.data}
           onCancel={() => this._toggleModalClose("modalImage")}
         />
         <ModalForm
-          data={this.state.modalForm}
+          active={modalForm.active}
+          data={modalForm}
           onCancel={() => this._toggleModalClose("modalForm")}
-        /> 
+        />
+        <AddButton onClick={() => this._toggleModalForm()}>
+          <Icon type="plus"/>
+        </AddButton> 
       </div>
     );
   }

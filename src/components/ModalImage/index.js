@@ -2,6 +2,7 @@ import React from 'react';
 import { Modal } from 'antd';
 
 import { b64toBlob } from '../../utils';
+import { WrapperImage, Image } from './styles';
 
 class ModalImage extends React.Component{
 	
@@ -20,28 +21,27 @@ class ModalImage extends React.Component{
 		});
 	}
 
-  	componentDidMount(){
-  		//this._decodeImage();
-  	}
-
   	componentDidUpdate(prevProps,prevState){
-  		if(prevProps.photo !== this.props.data.photo){
-			//this._decodeImage();
+  		if(prevProps.active !== this.props.active){
+	  		if(this.props.active){
+		  		this._decodeImage();
+	  		}
   		}
   	}
 
 	render(){
-		const { data:{active}, onCancel } = this.props;
+		const { active, onCancel } = this.props;
 		return(
 			<Modal 
-				title="Imagem"
 				visible={active}
 				onCancel={onCancel} 
 				footer={null}>
-		      <img 
-		      	src={this.state.decodeBlob} 
-		      	alt="Product photo"
-		      />
+		      <WrapperImage>
+		      	<Image
+					src={this.state.decodeBlob}
+			      	alt="Product photo"
+			      />
+		      </WrapperImage>
 		    </Modal>
 		);
 	}

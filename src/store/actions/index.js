@@ -16,7 +16,7 @@ export const storeProduct = formData => {
 	return async dispatch => {
 		const { data:{status} } = await api.post('/products',formData);
 		dispatch({
-			type: LOAD_PRODUCTS,
+			type: STORE_PRODUCT,
 			payload: {status}
 		});
 	};

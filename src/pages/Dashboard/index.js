@@ -5,12 +5,18 @@ import { connect } from 'react-redux';
 import MaxContainer from '../../components/MaxContainer';
 import Table from '../../components/Table';
 import { loadProducts } from '../../store/actions';
-import { styles, AddButton } from './styles';
+import { styles } from './styles';
 
 class Dashboard extends Component {
 
   componentDidUpdate(prevProps,prevState){
-    let { deleteStatus } = this.props.products;
+    let { storeStatus, deleteStatus } = this.props.products;
+    if(prevProps.storeStatus !== storeStatus){
+      if(storeStatus){
+        message.success('Product successfully add');
+        this.props.loadProducts();
+      }
+    }
     if(prevProps.deleteStatus !== deleteStatus){
       if(deleteStatus){
         message.success('Product successfully removed');
@@ -31,12 +37,7 @@ class Dashboard extends Component {
   			  loading ?
   				  <Spin style={styles.spin}/>
   			  :
-  				  <div>
-              <Table data={data}/>
-              <AddButton>
-                <Icon type="plus"/>
-              </AddButton>
-            </div>
+            <Table data={data}/>
         }
       </MaxContainer>
     );

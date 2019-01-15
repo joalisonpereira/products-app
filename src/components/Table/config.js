@@ -15,7 +15,7 @@ export const columns = [
       key: 'price',
   }, 
   {
-      title: 'Describe',
+      title: 'Description',
       dataIndex: 'describe',
       key: 'describe',
   }

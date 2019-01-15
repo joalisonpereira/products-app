@@ -20,11 +20,15 @@ const productReducer = (state=INITIAL_STATE,action) => {
 				data: action.payload.data,
 				loading: false
 			};
+		case STORE_PRODUCT:
+			return {
+				...INITIAL_STATE,
+				storeStatus: action.payload.status
+			};
 		case DELETE_PRODUCT:
 			return {
 				...INITIAL_STATE,
-				deleteStatus: action.payload.status,
-				loading: true	
+				deleteStatus: action.payload.status
 			};
 		default:
 			return state;
