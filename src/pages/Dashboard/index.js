@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { Spin, message } from 'antd';
+import { Spin, message, Icon } from 'antd';
 import { connect } from 'react-redux';
 
 import MaxContainer from '../../components/MaxContainer';
 import Table from '../../components/Table';
 import { loadProducts } from '../../store/actions';
-import { styles } from './styles';
+import { styles, AddButton } from './styles';
 
 class Dashboard extends Component {
 
@@ -24,14 +24,19 @@ class Dashboard extends Component {
   }
 
   render() {
-  	const { data, loading, deleteStatus } = this.props.products;
+  	const { data, loading } = this.props.products;
     return (
       <MaxContainer>
       	{
   			  loading ?
   				  <Spin style={styles.spin}/>
   			  :
-  				  <Table data={data}/>
+  				  <div>
+              <Table data={data}/>
+              <AddButton>
+                <Icon type="plus"/>
+              </AddButton>
+            </div>
         }
       </MaxContainer>
     );

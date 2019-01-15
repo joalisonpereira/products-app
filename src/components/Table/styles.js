@@ -4,17 +4,17 @@ import { metrics } from '../../styles';
 export const styles = {
 	warningIcon: {
 		color: 'red'
+	},
+	simpleIcon: {
+		fontSize: '20px'
 	}
 };
 
-export const WrapperFormIcon = styled.a`
+export const FormIconWrapper = styled.a`
 	font-size: 20px;
-`;
-
-export const WrapperDeleteIcon = styled.a`
-	font-size: 20px;
-	margin-left: ${metrics.mediumMargin};
-	@media(max-width: 510px){
-		margin-left: 0px;
+	margin: 0 ${metrics.mediumMargin};
+	@media(max-width: 576px){
+		margin: 0;
+		display: block;
 	}
 `;
