@@ -57,19 +57,18 @@ class MyTable extends React.Component{
   _actionsColumns(){
     const { deleteProduct } = this.props;
     return {
-      title: '',
+      title: 'Actions',
       key: 'action',
       render: product => (
         <span>
           <a 
-            href="#" 
+            href="#"
             style={styles.simpleIcon} 
             onClick={() => this._toggleModalImage(product)}>
             <Icon type="picture"/>
           </a>
           <FormIconWrapper 
-            onClick={() => this._toggleModalForm(product)}
-          >
+            onClick={() => this._toggleModalForm(product)}>
             <Icon type="form"/>
           </FormIconWrapper>
           <a href="#" style={styles.simpleIcon}> 
@@ -93,7 +92,7 @@ class MyTable extends React.Component{
     return(
       <div>
         <Table
-          columns={columns.concat(this._actionsColumns())} 
+          columns={columns.concat(this._actionsColumns())}
           dataSource={
             data.map(item => ({...item, key: item.id}))
           }

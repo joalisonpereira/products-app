@@ -22,6 +22,18 @@ export const storeProduct = formData => {
 	};
 }
 
+export const EDIT_PRODUCT = 'EDIT_PRODUCT';
+export const editProduct = (formData) => {
+	return async dispatch => {
+		const id = formData.get("id");
+		const { data:{status} } = await api.post(`/products/${id}`,formData);
+		dispatch({
+			type: EDIT_PRODUCT,
+			payload: {status}
+		});
+	}
+}
+
 export const DELETE_PRODUCT = 'DELETE_PRODUCT';
 export const deleteProduct = id => {
 	return async dispatch => {

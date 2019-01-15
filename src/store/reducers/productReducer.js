@@ -1,6 +1,7 @@
 import { 
 	LOAD_PRODUCTS,
 	STORE_PRODUCT,
+	EDIT_PRODUCT,
 	DELETE_PRODUCT 
 } from '../actions';
 
@@ -24,6 +25,11 @@ const productReducer = (state=INITIAL_STATE,action) => {
 			return {
 				...INITIAL_STATE,
 				storeStatus: action.payload.status
+			};
+		case EDIT_PRODUCT:
+			return {
+				...INITIAL_STATE,
+				editStatus: action.payload.status
 			};
 		case DELETE_PRODUCT:
 			return {

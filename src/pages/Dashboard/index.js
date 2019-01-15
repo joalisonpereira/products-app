@@ -10,10 +10,19 @@ import { styles } from './styles';
 class Dashboard extends Component {
 
   componentDidUpdate(prevProps,prevState){
-    let { storeStatus, deleteStatus } = this.props.products;
+    let { 
+      storeStatus,
+      editStatus, 
+      deleteStatus } = this.props.products;
     if(prevProps.storeStatus !== storeStatus){
       if(storeStatus){
         message.success('Product successfully add');
+        this.props.loadProducts();
+      }
+    }
+    if(prevProps.editStatus !== editStatus){
+      if(editStatus){
+        message.success('Product successfully edited');
         this.props.loadProducts();
       }
     }

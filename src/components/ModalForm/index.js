@@ -2,17 +2,18 @@ import React,{ Component } from 'react';
 import { connect } from 'react-redux';
 import { Modal, Input, message } from 'antd';
 
-import { storeProduct } from '../../store/actions'; 
+import { storeProduct, editProduct } from '../../store/actions'; 
 import { Divider } from './styles';
+
+const INITIAL_STATE = {
+	name: '',
+	price: '',
+	describe: ''
+};
 
 class ModalForm extends Component{
 
-	state = {
-		title: 'Add Product',
-		name: '',
-		price: '',
-		describe: ''
-	}
+	state = INITIAL_STATE;
 
 	_handleChange(e){
 		const { name, value } = e.target;
@@ -23,18 +24,27 @@ class ModalForm extends Component{
 
 	_handleSubmit(){
 		const { name,price,describe } = this.state;
-		const photo = document.querySelector("#photo").files[0];
+		const uploadPhoto = document.querySelector("#photo").files[0];
+
 		//Validation
 		if(name.length < 1 || price.length < 1 || describe.length < 1){
 			return message.error("There should be no empty fields",1);
 		}
-		//Submit
+		//Data
 		let formData = new FormData();
 		formData.append('name',this.state.name);
 		formData.append('price',this.state.price)
-		formData.append('describe',this.state.price);
-		formData.append('photo', photo);
-		this.props.storeProduct(formData);
+		formData.append('describe',this.state.describe);
+		formData.append('photo', uploadPhoto);
+
+		//Submit
+		let {data,editProduct,storeProduct} = this.props;
+		if(data){
+			formData.append('id', data.id);
+			formData.append('_method','PUT');
+			return editProduct(formData);
+		}
+		storeProduct(formData);
 	}
 
 	componentDidUpdate(prevProps,prevState){
@@ -46,6 +56,8 @@ class ModalForm extends Component{
 		  			...data,
 		  			title: data ? 'Update product' : 'Add Product'
 		  		});
+	  		}else{
+	  			this.setState({...INITIAL_STATE});
 	  		}
   		}
 	}
@@ -59,13 +71,12 @@ class ModalForm extends Component{
 				onOk={() => this._handleSubmit()} 
 				onCancel={onCancel}
 				visible={active}>
-				<form method="post">
+				<form method="post" encType="multipart/form-data">
 					<Input 
 						name="name"
 						placeholder="Name"
 						value={this.state.name}
 						onChange={e => this._handleChange(e)} 
-						onBlur={e => console.log(e)}
 					/>
 					<Divider/>
 					<Input 
@@ -75,7 +86,6 @@ class ModalForm extends Component{
 						addonBefore="R$"
 						value={this.state.price}
 						onChange={e => this._handleChange(e)} 
-						onBlur={e => console.log(e)}
 					/>
 					<Divider/>
 					<Input.TextArea
@@ -84,7 +94,6 @@ class ModalForm extends Component{
 						rows="4"
 						value={this.state.describe}
 						onChange={e => this._handleChange(e)} 
-						onBlur={e => console.log(e)}
 					/>
 					<Divider/>
 					<input 
@@ -100,7 +109,7 @@ class ModalForm extends Component{
 }
 
 const mapDispatchToProps = {
-	storeProduct
+	storeProduct, editProduct
 };
 
 export default connect(null,mapDispatchToProps)(ModalForm);
