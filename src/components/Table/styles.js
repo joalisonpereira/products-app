@@ -7,13 +7,18 @@ export const styles = {
 	},
 	simpleIcon: {
 		fontSize: '20px'
+	},
+	describeColumn: {
+		wordWrap: 'break-word',
+		maxWidth: 300,
+		minHeight: 'auto'
 	}
 };
 
 export const FormIconWrapper = styled.a`
 	font-size: 20px;
 	margin: 0 ${metrics.mediumMargin};
-	@media(max-width: 576px){
+	@media(max-width: 992px){
 		margin: 0;
 		display: block;
 	}

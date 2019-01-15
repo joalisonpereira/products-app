@@ -30,6 +30,9 @@ class ModalForm extends Component{
 		if(name.length < 1 || price.length < 1 || describe.length < 1){
 			return message.error("There should be no empty fields",1);
 		}
+		if(!this.props.data && !uploadPhoto){
+			return message.error("You need to add a photo",1);
+		}
 		//Data
 		let formData = new FormData();
 		formData.append('name',this.state.name);

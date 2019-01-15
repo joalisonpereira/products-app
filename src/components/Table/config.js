@@ -1,3 +1,7 @@
+import React from 'react';
+
+import { styles } from './styles';
+
 export const columns = [
   {
       title: '#',
@@ -18,5 +22,10 @@ export const columns = [
       title: 'Description',
       dataIndex: 'describe',
       key: 'describe',
+      render: text => (
+        <p style={styles.describeColumn}>
+          { text }
+        </p>
+      )
   }
 ];
