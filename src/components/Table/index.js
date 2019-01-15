@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import ModalImage from '../../components/ModalImage';
 import ModalForm from '../../components/ModalForm';
 import { columns } from './config';
-import { b64toBlob } from '../../utils';
 import { styles, AddButton, FormIconWrapper } from './styles';
 import { deleteProduct } from '../../store/actions';
 
@@ -18,12 +17,11 @@ class MyTable extends React.Component{
     },
     modalForm:{
       active: false,
-      data: null
+      data: null,
     }
   }
 
   _toggleModalImage({photo,photo_type}){
-    const { modalImage } = this.state;
     this.setState({
       ...this.state,
       modalImage: {
@@ -37,7 +35,6 @@ class MyTable extends React.Component{
   }
 
   _toggleModalForm(product=null){
-    const { modalForm } = this.state;
     this.setState({
       ...this.state,
       modalForm: {
@@ -108,7 +105,7 @@ class MyTable extends React.Component{
         />
         <ModalForm
           active={modalForm.active}
-          data={modalForm}
+          data={modalForm.data}
           onCancel={() => this._toggleModalClose("modalForm")}
         />
         <AddButton onClick={() => this._toggleModalForm()}>

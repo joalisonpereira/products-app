@@ -6,8 +6,9 @@ import { storeProduct } from '../../store/actions';
 import { Divider } from './styles';
 
 class ModalForm extends Component{
-	
+
 	state = {
+		title: 'Add Product',
 		name: '',
 		price: '',
 		describe: ''
@@ -36,11 +37,24 @@ class ModalForm extends Component{
 		this.props.storeProduct(formData);
 	}
 
+	componentDidUpdate(prevProps,prevState){
+		const { active, data } = this.props;
+		if(prevProps.active !== active){
+	  		if(this.props.active){
+		  		this.setState({
+		  			...this.state,
+		  			...data,
+		  			title: data ? 'Update product' : 'Add Product'
+		  		});
+	  		}
+  		}
+	}
+
 	render(){
-		const { active,data,onCancel } = this.props;
+		const { active, onCancel } = this.props;
 		return(
 			<Modal
-				title="New product"
+				title={this.state.title}
 				okText="Send"
 				onOk={() => this._handleSubmit()} 
 				onCancel={onCancel}

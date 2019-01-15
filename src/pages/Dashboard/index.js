@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Spin, message, Icon } from 'antd';
+import { Spin, message } from 'antd';
 import { connect } from 'react-redux';
 
 import MaxContainer from '../../components/MaxContainer';
