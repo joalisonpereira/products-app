@@ -8,8 +8,6 @@ import {
 const INITIAL_STATE = {
 	data: [],
 	loading: true,
-	deleteStatus: false,
-	editStatus: false,
 	error: false
 };
 

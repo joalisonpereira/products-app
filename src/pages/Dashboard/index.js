@@ -15,20 +15,29 @@ class Dashboard extends Component {
       editStatus, 
       deleteStatus } = this.props.products;
     if(prevProps.storeStatus !== storeStatus){
-      if(storeStatus===200){
-        message.success('Product successfully add');
+      if(storeStatus){
+        if(storeStatus===200)
+          message.success('Product successfully add');
+        else
+          message.error('Unexpected error');
         this.props.loadProducts();
       }
     }
     if(prevProps.editStatus !== editStatus){
-      if(editStatus===200){
-        message.success('Product successfully edited');
+      if(editStatus){
+        if(editStatus===200)
+          message.success('Product successfully edited');
+        else
+          message.error('Unexpected error');
         this.props.loadProducts();
       }
     }
     if(prevProps.deleteStatus !== deleteStatus){
-      if(deleteStatus===200){
-        message.success('Product successfully removed');
+      if(deleteStatus){
+        if(deleteStatus===200)
+          message.success('Product successfully removed');
+        else
+          message.error('Unexpected error');
         this.props.loadProducts();
       }
     }
