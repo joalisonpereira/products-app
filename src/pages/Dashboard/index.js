@@ -15,19 +15,19 @@ class Dashboard extends Component {
       editStatus, 
       deleteStatus } = this.props.products;
     if(prevProps.storeStatus !== storeStatus){
-      if(storeStatus){
+      if(storeStatus===200){
         message.success('Product successfully add');
         this.props.loadProducts();
       }
     }
     if(prevProps.editStatus !== editStatus){
-      if(editStatus){
+      if(editStatus===200){
         message.success('Product successfully edited');
         this.props.loadProducts();
       }
     }
     if(prevProps.deleteStatus !== deleteStatus){
-      if(deleteStatus){
+      if(deleteStatus===200){
         message.success('Product successfully removed');
         this.props.loadProducts();
       }
