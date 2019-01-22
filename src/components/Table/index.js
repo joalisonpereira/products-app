@@ -115,8 +115,6 @@ class MyTable extends React.Component{
   }
 }
 
-const mapDispatchToProps = {
-  deleteProduct
-};
+const mapDispatchToProps = {deleteProduct};
 
 export default connect(null,mapDispatchToProps)(MyTable);

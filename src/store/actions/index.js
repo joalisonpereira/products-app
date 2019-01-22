@@ -23,10 +23,10 @@ export const storeProduct = formData => {
 }
 
 export const EDIT_PRODUCT = 'EDIT_PRODUCT';
-export const editProduct = (formData) => {
+export const editProduct = formData => {
 	return async dispatch => {
 		const id = formData.get("id");
-		const { data:{status} } = await api.post(`/products/${id}`,formData);
+		const { data, data:{status} } = await api.put(`/products/${id}`,formData);
 		dispatch({
 			type: EDIT_PRODUCT,
 			payload: {status}

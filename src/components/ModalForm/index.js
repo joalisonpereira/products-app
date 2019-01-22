@@ -38,7 +38,7 @@ class ModalForm extends Component{
 		formData.append('name',this.state.name);
 		formData.append('price',this.state.price)
 		formData.append('describe',this.state.describe);
-		formData.append('photo', uploadPhoto);
+		uploadPhoto && (formData.append('photo', uploadPhoto))
 
 		//Submit
 		let {data,editProduct,storeProduct} = this.props;
@@ -79,7 +79,8 @@ class ModalForm extends Component{
 						name="name"
 						placeholder="Name"
 						value={this.state.name}
-						onChange={e => this._handleChange(e)} 
+						onChange={e => this._handleChange(e)}
+						minLength="3"
 					/>
 					<Divider/>
 					<Input 
@@ -88,7 +89,7 @@ class ModalForm extends Component{
 						type="number"
 						addonBefore="R$"
 						value={this.state.price}
-						onChange={e => this._handleChange(e)} 
+						onChange={e => this._handleChange(e)}
 					/>
 					<Divider/>
 					<Input.TextArea
